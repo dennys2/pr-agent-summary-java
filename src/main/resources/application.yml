@@ -1,0 +1,27 @@
+spring:
+  main:
+    # CLI app — no embedded Tomcat needed
+    web-application-type: none
+
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: gpt-4o
+          temperature: 0.3
+
+github:
+  token: ${GITHUB_TOKEN}
+
+# Target PR — override via env vars or command-line args
+review:
+  owner: ${REVIEW_OWNER:octocat}
+  repo: ${REVIEW_REPO:Hello-World}
+  pr-number: ${REVIEW_PR_NUMBER:1}
+
+logging:
+  level:
+    com.codereviewer: DEBUG
+    org.springframework.ai: INFO
+    org.springframework.web.client.RestClient: DEBUG
